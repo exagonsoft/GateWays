@@ -9,69 +9,69 @@ import jakarta.persistence.GenerationType;
 public class GateWays {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int PKID_GateWay;
-    private String SerialNumber;
-    private String GateWayName;
-    private String IPV4_Address;
+    private int id;
+    private String serialnumber;
+    private String name;
+    private String ipaddress;
 
     public GateWays(){
 
     }
 
     /**
-     * @return int return the PKID_GateWay
+     * @return int return the id
      */
-    public int getPKID_GateWay() {
-        return PKID_GateWay;
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param PKID_GateWay the PKID_GateWay to set
+     * @param id the id to set
      */
-    public void setPKID_GateWay(int PKID_GateWay) {
-        this.PKID_GateWay = PKID_GateWay;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
-     * @return String return the SerialNumber
+     * @return String return the serialnumber
      */
-    public String getSerialNumber() {
-        return SerialNumber;
+    public String getSerialnumber() {
+        return serialnumber;
     }
 
     /**
-     * @param SerialNumber the SerialNumber to set
+     * @param serialnumber the serialnumber to set
      */
-    public void setSerialNumber(String SerialNumber) {
-        this.SerialNumber = SerialNumber;
+    public void setSerialnumber(String serialnumber) {
+        this.serialnumber = serialnumber;
     }
 
     /**
-     * @return String return the GateWayName
+     * @return String return the name
      */
-    public String getGateWayName() {
-        return GateWayName;
+    public String getName() {
+        return name;
     }
 
     /**
-     * @param GateWayName the GateWayName to set
+     * @param name the name to set
      */
-    public void setGateWayName(String GateWayName) {
-        this.GateWayName = GateWayName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * @return String return the IPV4_Address
+     * @return String return the ipaddress
      */
-    public String getIPV4_Address() {
-        return IPV4_Address;
+    public String getIpaddress() {
+        return ipaddress;
     }
 
     /**
-     * @param IPV4_Address the IPV4_Address to set
+     * @param ipaddress the ipaddress to set
      */
-    public void setIPV4_Address(String IPV4_Address) {
-        this.IPV4_Address = IPV4_Address;
+    public void setIpaddress(String ipaddress) {
+        this.ipaddress = ipaddress;
     }
 
 }

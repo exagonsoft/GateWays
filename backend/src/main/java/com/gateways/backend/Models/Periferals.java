@@ -9,99 +9,101 @@ import jakarta.persistence.GenerationType;
 public class Periferals {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int PKID_Periferal ;
-    private int UID_Number ;
-    private String Vendor;
-    private String  CreateDate;
-    private Boolean Status;
-    private int FKID_GateWay;
+    private int id ;
+    private int idnumber ;
+    private String vendor;
+    private String  cratedate;
+    private Boolean status;
+    private int gatewayid;
 
     public Periferals() {
 
     }
 
+    
+
     /**
-     * @return int return the PKID_Periferal
+     * @return int return the id
      */
-    public int getPKID_Periferal() {
-        return PKID_Periferal;
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param PKID_Periferal the PKID_Periferal to set
+     * @param id the id to set
      */
-    public void setPKID_Periferal(int PKID_Periferal) {
-        this.PKID_Periferal = PKID_Periferal;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
-     * @return int return the UID_Number
+     * @return int return the idnumber
      */
-    public int getUID_Number() {
-        return UID_Number;
+    public int getIdnumber() {
+        return idnumber;
     }
 
     /**
-     * @param UID_Number the UID_Number to set
+     * @param idnumber the idnumber to set
      */
-    public void setUID_Number(int UID_Number) {
-        this.UID_Number = UID_Number;
+    public void setIdnumber(int idnumber) {
+        this.idnumber = idnumber;
     }
 
     /**
-     * @return String return the Vendor
+     * @return String return the vendor
      */
     public String getVendor() {
-        return Vendor;
+        return vendor;
     }
 
     /**
-     * @param Vendor the Vendor to set
+     * @param vendor the vendor to set
      */
-    public void setVendor(String Vendor) {
-        this.Vendor = Vendor;
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
     }
 
     /**
-     * @return String return the CreateDate
+     * @return String return the cratedate
      */
-    public String getCreateDate() {
-        return CreateDate;
+    public String getCratedate() {
+        return cratedate;
     }
 
     /**
-     * @param CreateDate the CreateDate to set
+     * @param cratedate the cratedate to set
      */
-    public void setCreateDate(String CreateDate) {
-        this.CreateDate = CreateDate;
+    public void setCratedate(String cratedate) {
+        this.cratedate = cratedate;
     }
 
     /**
-     * @return Boolean return the Status
+     * @return Boolean return the status
      */
     public Boolean isStatus() {
-        return Status;
+        return status;
     }
 
     /**
-     * @param Status the Status to set
+     * @param status the status to set
      */
-    public void setStatus(Boolean Status) {
-        this.Status = Status;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     /**
-     * @return int return the FKID_GateWay
+     * @return int return the gatewayid
      */
-    public int getFKID_GateWay() {
-        return FKID_GateWay;
+    public int getGatewayid() {
+        return gatewayid;
     }
 
     /**
-     * @param FKID_GateWay the FKID_GateWay to set
+     * @param gatewayid the gatewayid to set
      */
-    public void setFKID_GateWay(int FKID_GateWay) {
-        this.FKID_GateWay = FKID_GateWay;
+    public void setGatewayid(int gatewayid) {
+        this.gatewayid = gatewayid;
     }
 
 }
