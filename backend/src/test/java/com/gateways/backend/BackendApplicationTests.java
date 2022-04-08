@@ -1,10 +1,10 @@
-package gateway.control.gwc;
+package com.gateways.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GateWaysControlApplicationTests {
+class BackendApplicationTests {
 
 	@Test
 	void contextLoads() {

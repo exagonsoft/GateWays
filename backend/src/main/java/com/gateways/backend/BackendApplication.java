@@ -1,13 +1,13 @@
-package gateway.control.gwc;
+package com.gateways.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GateWaysControlApplication {
+public class BackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GateWaysControlApplication.class, args);
+		SpringApplication.run(BackendApplication.class, args);
 	}
 
 }
