@@ -20,7 +20,7 @@ public class GateWaysController {
         try{
             gatewaysService.addGateWay(gateway);
             returnMessage = "New GateWay Added";
-        }catch(Error error){
+        }catch(Exception error){
             returnMessage = error.getMessage();
         }
         return  returnMessage;
