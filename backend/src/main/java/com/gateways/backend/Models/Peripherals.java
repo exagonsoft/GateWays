@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 @Entity
-public class Periferals {
+public class Peripherals {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id ;
@@ -16,7 +16,7 @@ public class Periferals {
     private Boolean status;
     private int gatewayid;
 
-    public Periferals() {
+    public Peripherals() {
 
     }
 

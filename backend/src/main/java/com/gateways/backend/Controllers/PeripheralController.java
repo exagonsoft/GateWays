@@ -1,25 +1,25 @@
 package com.gateways.backend.Controllers;
 
-import com.gateways.backend.Services.PeriferalsService;
+import com.gateways.backend.Services.PeripheralsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.gateways.backend.Models.Periferals;
+import com.gateways.backend.Models.Peripherals;
 
 @RestController
-@RequestMapping("/periferals")
-public class PeriferalController {
+@RequestMapping("/peripherals")
+public class PeripheralController {
     @Autowired
-    private PeriferalsService periferalsService;
+    private PeripheralsService peripheralsService;
 
-    @PostMapping("/addperiferal")
-    public String add(@RequestBody Periferals periferal){
+    @PostMapping("/addPeripheral")
+    public String add(@RequestBody Peripherals peripheral){
         String returnMessage = "";
         try {
-            periferalsService.addPeriferal(periferal);
-            returnMessage = "New Periferal Added";
+            peripheralsService.addPeripheral(peripheral);
+            returnMessage = "New Peripheral Added";
         } catch (Exception error) {
             returnMessage = error.getMessage();
         }
