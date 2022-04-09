@@ -7,4 +7,5 @@ public interface PeripheralsService {
     public Peripherals addPeripheral(Peripherals peripheral);
     public List<Peripherals> getAllPeripherals(int gatewayID);
     public Peripherals getPeripheral(int peripheralID);
+    public String deletePeripheral(int peripheralID);
 }

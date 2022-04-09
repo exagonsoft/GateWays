@@ -35,4 +35,14 @@ public class PeripheralsServiceImplementation implements PeripheralsService{
             return null;
         }
     }
+
+    @Override
+    public String deletePeripheral(int peripheralID){
+        try{
+            peripheralsRepository.deleteById(peripheralID);
+            return "Peripheral deleted";
+        }catch(Exception error){
+            return error.getMessage();
+        }
+    }
 }

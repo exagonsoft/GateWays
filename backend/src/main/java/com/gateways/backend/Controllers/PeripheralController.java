@@ -16,7 +16,7 @@ public class PeripheralController {
     @Autowired
     private PeripheralsService peripheralsService;
 
-    @PostMapping("/addPeripheral")
+    @PostMapping("/addperipheral")
     public String add(@RequestBody Peripherals peripheral){
         String returnMessage = "";
         try {
@@ -44,6 +44,15 @@ public class PeripheralController {
             return peripheralsService.getPeripheral(peripheralID);
         } catch (Exception error) {
             return null;
+        }
+    }
+
+    @PostMapping("/delete")
+    public String deleteGateWay(int peripheralID){
+        try{
+           return peripheralsService.deletePeripheral(peripheralID);
+        }catch(Exception error){
+            return error.getMessage();
         }
     }
 }
