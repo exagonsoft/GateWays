@@ -45,4 +45,14 @@ public class GateWaysController {
             return null;
         }
     }
+
+    @PostMapping("/delete")
+    public String deleteGateWay(int gatewayID){
+        try{
+           return gatewaysService.deleteGateWay(gatewayID);
+        }catch(Exception error){
+            return error.getMessage();
+        }
+    }
+
 }
