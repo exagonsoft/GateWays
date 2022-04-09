@@ -20,4 +20,19 @@ public class GateWaysServiceImplementation implements GateWaysService{
     public List<GateWays> getAllGateWays(){
         return gatewaysRepository.findAll();
     }
+
+    @Override
+    public GateWays getGateWay(int gatewayID){
+        try {
+            var gatewayValue = gatewaysRepository.findById(gatewayID);
+            if(!gatewayValue.isEmpty()){
+                return gatewayValue.get();
+            }
+            else{
+                return null;
+            }
+        } catch (Exception error) {
+            return null;
+        }
+    }
 }

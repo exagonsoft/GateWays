@@ -37,4 +37,13 @@ public class GateWaysController {
         }
         
     }
+
+    @GetMapping("get")
+    public GateWays gateway(int gatewayID){
+        try {
+            return gatewaysService.getGateWay(gatewayID);
+        } catch (Exception error) {
+            return null;
+        }
+    }
 }
