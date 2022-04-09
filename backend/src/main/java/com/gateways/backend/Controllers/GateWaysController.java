@@ -1,12 +1,14 @@
 package com.gateways.backend.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.gateways.backend.Services.GateWaysService;
 import com.gateways.backend.Models.GateWays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/gateways")
@@ -24,5 +26,15 @@ public class GateWaysController {
             returnMessage = error.getMessage();
         }
         return  returnMessage;
+    }
+
+    @GetMapping("/getAll")
+    public List<GateWays> getAllGateWays(){
+        try{
+           return gatewaysService.getAllGateWays();
+        }catch(Exception error){
+            return null;
+        }
+        
     }
 }
