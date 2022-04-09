@@ -37,4 +37,13 @@ public class PeripheralController {
            return null;
        }
     }
+
+    @GetMapping("get")
+    public Peripherals peripheral(int peripheralID){
+        try {
+            return peripheralsService.getPeripheral(peripheralID);
+        } catch (Exception error) {
+            return null;
+        }
+    }
 }

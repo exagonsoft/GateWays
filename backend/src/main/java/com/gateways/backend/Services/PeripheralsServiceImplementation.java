@@ -20,4 +20,19 @@ public class PeripheralsServiceImplementation implements PeripheralsService{
     public List<Peripherals> getAllPeripherals(int gatewayID){
         return peripheralsRepository.getAllPeripherals(gatewayID);
     }
+
+    @Override
+    public Peripherals getPeripheral(int peripheralID){
+        try {
+            var peripheralValue = peripheralsRepository.findById(peripheralID);
+            if(!peripheralValue.isEmpty()){
+                return peripheralValue.get();
+            }
+            else{
+                return null;
+            }
+        } catch (Exception error) {
+            return null;
+        }
+    }
 }

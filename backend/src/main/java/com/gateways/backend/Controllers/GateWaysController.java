@@ -35,7 +35,6 @@ public class GateWaysController {
         }catch(Exception error){
             return null;
         }
-        
     }
 
     @GetMapping("get")
