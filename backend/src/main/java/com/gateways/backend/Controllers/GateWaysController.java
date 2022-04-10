@@ -1,6 +1,7 @@
 package com.gateways.backend.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/gateways")
+@CrossOrigin
 public class GateWaysController {
     @Autowired
     private GateWaysService gatewaysService;
