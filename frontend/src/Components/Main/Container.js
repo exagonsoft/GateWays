@@ -5,6 +5,6 @@ export const MainContainer = styled.div`
    justify-components = center;
    border-radius: 20px;
    padding: 20px;
-   margin: 50px;
-   shadow-box: 3px 3px 3px gray;
+   margin: 10% 50px 50px 50px;
+   box-shadow: 3px 3px 3px 3px gray;
 `

@@ -36,10 +36,10 @@ public class GateWaysServiceImplementation implements GateWaysService{
         }
     }
 
-    // @Override
-    // public GateWays updateGateWay(GateWays newGateway, int gatewayID){
-    //     return gatewaysRepository.saveAndFlush(newGateway);
-    // }
+    @Override
+    public GateWays updateGateWay(GateWays newGateway){
+       return gatewaysRepository.save(newGateway);
+    }
 
     @Override
     public String deleteGateWay(int gatewayID){

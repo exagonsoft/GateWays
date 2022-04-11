@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GateWaysRepository extends JpaRepository<GateWays, Integer>{
-    
+   
 }

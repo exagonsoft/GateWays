@@ -5,16 +5,23 @@ import gateway from "../../Pictures/GateWay.svg";
 import { NavBrand } from "./NavBarComponents/NavBrand";
 import { NavLogo } from "./NavBarComponents/NavLogo";
 import { NavLogoContainer } from "./NavBarComponents/NavLogoContainer";
+import { NavButton } from "./NavBarComponents/NavButton";
+import { NavButtonsContainer } from "./NavBarComponents/NavButtonsContainer";
 
-const NavBar = () => {
+const NavBar = ({OnAddGatewayClick}) => {
   return (
     <>
       <Nav>
         <NavContainer>
           <NavLogoContainer to="/">
-            <NavBrand src={gateway} />
+            <NavBrand src={gateway} alt="GC-Banner"/>
             <NavLogo>Gateways Controll</NavLogo>
           </NavLogoContainer>
+          <NavButtonsContainer>
+            <NavButton onClick={() => {
+              OnAddGatewayClick(false);
+              }}>New Gateway</NavButton>
+          </NavButtonsContainer>
         </NavContainer>
       </Nav>
     </>

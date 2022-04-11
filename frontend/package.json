@@ -12,6 +12,7 @@
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^2.1.8",
+    "react-toastify": "^8.2.0",
     "styled-components": "^5.3.5",
     "tostify": "^0.0.1",
     "web-vitals": "^2.1.4"

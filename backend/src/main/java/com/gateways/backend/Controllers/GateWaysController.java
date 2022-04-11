@@ -57,4 +57,14 @@ public class GateWaysController {
         }
     }
 
+    @PostMapping("/update")
+    public String updateGateway(@RequestBody GateWays newGateway){
+        try{
+           gatewaysService.updateGateWay(newGateway);
+           return "Update Complete";
+        }catch(Exception error){
+            return error.getMessage();
+        }
+    }
+
 }
