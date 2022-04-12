@@ -15,44 +15,46 @@ import { GatewayItemBodySeparator } from "./GatewayComponents/GatewayItemBodySep
 import { GatewayItemBodyAddPeripheralButton } from "./GatewayComponents/GatewayItemBodyAddPeripheralButton";
 import Peripheral from "../Peripheral/Peripheral";
 
-const Gateway = ({ Gateway, itemClick, ShowDeleteDialog, OnEditGatewayClick}) => {
+const Gateway = React.forwardRef((props, ref) => {
   const [peripheralList, setperipheralList] = useState([]);
 
   async function GetPeripherals(){
     try {
-      let jsonPeripherals = await (await fetch("http://localhost:8085/peripherals/getAll?gatewayID=" + Gateway.id)).json();
+      let jsonPeripherals = await (await fetch("http://localhost:8085/peripherals/getAll?gatewayID=" + props.Gateway.id)).json();
       setperipheralList(jsonPeripherals);
     } catch (error) {
       console.log(error);
     }
   }
 
-  function onPeripheralClick(){
-
-  }
-
   useEffect(() => {
     GetPeripherals();
-  }, [setperipheralList]);
+  }, []);
 
   return (
     <>
+      <button
+        ref={ref}
+        id="dummyButton"
+        className="Hidden"
+        onClick={GetPeripherals}
+      ></button>
       <GatewayItem className="collapsible-header ClickableItem">
-        <GatewayItemHead onClick={itemClick}>
+        <GatewayItemHead onClick={props.itemClick}>
           <GatewayItemHeadWrapper>
             <GatewayItemHeadIcon src={gatewayIcon} alt="Gateway"/>
             <GatewayItemHeadText>
-              {Gateway.name} ({Gateway.serialnumber}) ({Gateway.ipaddress})
+              {props.Gateway.name} ({props.Gateway.serialnumber}) ({props.Gateway.ipaddress})
             </GatewayItemHeadText>
           </GatewayItemHeadWrapper>
           <GatewayHeadButtonsWrapper>
             <GatewayItemEditButton onClick={() => {
-              OnEditGatewayClick(Gateway);
+              props.OnEditGatewayClick(props.Gateway);
             }} className="Button">
               Edit
             </GatewayItemEditButton>
             <GatewayItemDelButton onClick={() => {
-               ShowDeleteDialog(Gateway);
+               props.OnDeleteGateWayClick(props.Gateway);
             }} className="Button">
               Delete
             </GatewayItemDelButton>
@@ -62,7 +64,9 @@ const Gateway = ({ Gateway, itemClick, ShowDeleteDialog, OnEditGatewayClick}) =>
           <GatewayItemBody>
             <GatewayItemBodyButtonsWrapper>
               {peripheralList.length < 10 ? (
-                <GatewayItemBodyAddPeripheralButton>
+                <GatewayItemBodyAddPeripheralButton onClick={() => {
+                  props.OnAddPeripheralClick(props.Gateway);
+                }} className="Button">
                   New Peripheral
                 </GatewayItemBodyAddPeripheralButton>
               ) : (
@@ -71,13 +75,13 @@ const Gateway = ({ Gateway, itemClick, ShowDeleteDialog, OnEditGatewayClick}) =>
             </GatewayItemBodyButtonsWrapper>
             <GatewayItemBodySeparator />
             {peripheralList && peripheralList.map((peripheral, index) => (
-               <Peripheral key={index++} Peripheral={peripheral} onPeripheralClick={onPeripheralClick}></Peripheral>
+               <Peripheral key={index++} Peripheral={peripheral} ></Peripheral>
             ))}
           </GatewayItemBody>
         </GatewayItemBodyWrapper>
       </GatewayItem>
     </>
   );
-};
+})
 
 export default Gateway;

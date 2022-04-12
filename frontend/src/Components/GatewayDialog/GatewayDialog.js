@@ -7,7 +7,7 @@ import { GatewayDialogInput } from "./GatewayDialogComponents/GatewayDialogInput
 import { GatewayDialogModalBack } from "./GatewayDialogComponents/GatewayDialogModalBack";
 import { GatewayDialogTitle } from "./GatewayDialogComponents/GatewayDialogTitle";
 
-const GatewayDialog = ({ showGatewayDialog, OnAddGatewayClick, Gateway }) => {
+const GatewayDialog = ({ showGatewayDialog, OnCloseDialogs, Gateway }) => {
   const [isvalidData, setisvalidData] = useState(false);
   const initialGatewayState = {
     name: "",
@@ -178,7 +178,7 @@ const GatewayDialog = ({ showGatewayDialog, OnAddGatewayClick, Gateway }) => {
           });
         }
         ClearData();
-        OnAddGatewayClick(true);
+        OnCloseDialogs(true);
       } catch (error) {
         alert(error);
       }
@@ -193,6 +193,13 @@ const GatewayDialog = ({ showGatewayDialog, OnAddGatewayClick, Gateway }) => {
       let address = document.getElementById("gatIpAddress");
       name.value = Gateway.name;
       address.value = Gateway.ipaddress;
+      let dummyGatewayDta = {
+        id: Gateway.id,
+        serialnumber: Gateway.serialnumber,
+        name: Gateway.name,
+        ipaddress: Gateway.ipaddress,
+      };
+      setgatewayData(dummyGatewayDta);
     }
   }
 
@@ -208,7 +215,7 @@ const GatewayDialog = ({ showGatewayDialog, OnAddGatewayClick, Gateway }) => {
             <GatewayDialogCloseButton
               onClick={() => {
                 ClearData();
-                OnAddGatewayClick(false);
+                OnCloseDialogs(false);
               }}
             >
               X

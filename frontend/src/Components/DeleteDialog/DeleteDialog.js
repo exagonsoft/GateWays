@@ -8,13 +8,19 @@ import { DeleteDialogContainer } from "./DeleteDialogComponents/DeleteDialogCont
 import { DeleteDialogMessage } from "./DeleteDialogComponents/DeleteDialogMessage";
 import { DeleteDialogOkButton } from "./DeleteDialogComponents/DeleteDialogOkButton";
 
-const DeleteDialog = ({ showDeleteDialog, editGatewayID, CloseDialog }) => {
+const DeleteDialog = ({ showDeleteDialog, editGateway, OnCloseDialogs }) => {
   async function DeleteGateway(){
-    let res = await fetch("http://localhost:8085/gateways/delete?gatewayID=" + editGatewayID, {
+    await fetch("http://localhost:8085/peripherals/deleteall?gatewayID=" + editGateway.id,{
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(""),
+      body: JSON.stringify("")
     });
+    await fetch("http://localhost:8085/gateways/delete?gatewayID=" + editGateway.id, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify("")
+    });
+    OnCloseDialogs(true);
   }
 
   return (
@@ -22,14 +28,13 @@ const DeleteDialog = ({ showDeleteDialog, editGatewayID, CloseDialog }) => {
       <DeleteDialogBack showDeleteDialog={showDeleteDialog}>
         <DeleteDialogContainer>
           <DeleteDialogCloseButtonWrapper>
-            <DeleteDialogCloseButton onClick={() => {CloseDialog(false);}}>X</DeleteDialogCloseButton>
+            <DeleteDialogCloseButton onClick={() => {OnCloseDialogs(false);}}>X</DeleteDialogCloseButton>
           </DeleteDialogCloseButtonWrapper>
           <DeleteDialogMessage>Are you sure?</DeleteDialogMessage>
           <DeleteDialogButtonsWrapper>
-            <DeleteDialogCancelButton onClick={() => {CloseDialog(false);}}>Cancel</DeleteDialogCancelButton>
+            <DeleteDialogCancelButton onClick={() => {OnCloseDialogs(false);}}>Cancel</DeleteDialogCancelButton>
             <DeleteDialogOkButton onClick={() => {
               DeleteGateway();
-              CloseDialog(true);
             }}>Delete</DeleteDialogOkButton>
           </DeleteDialogButtonsWrapper>
         </DeleteDialogContainer>

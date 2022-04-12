@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react'
-import { GatewayList } from '../../Components/Gateway/GatewayComponents/GatewayList';
-import { HomeContainer } from './HomeComponents/HomeContainer'
-import { HomeWrapper } from './HomeComponents/HomeWrapper'
-import Gateway from '../../Components/Gateway/Gateway';
-import DeleteDialog from '../../Components/DeleteDialog/DeleteDialog';
+import React, { useEffect, useState } from "react";
+import { GatewayList } from "../../Components/Gateway/GatewayComponents/GatewayList";
+import { HomeContainer } from "./HomeComponents/HomeContainer";
+import { HomeWrapper } from "./HomeComponents/HomeWrapper";
+import Gateway from "../../Components/Gateway/Gateway";
 
 function CollapseClick(sender) {
   var gateWayHeader = sender.target.closest(".collapsible-header");
@@ -11,7 +10,7 @@ function CollapseClick(sender) {
   var classList = gateWayBody.classList;
   var hasClass = false;
 
-  if(!sender.target.classList.contains('Button')){
+  if (!sender.target.classList.contains("Button")) {
     classList.forEach((element) => {
       if (element === "Hidden") {
         hasClass = true;
@@ -26,51 +25,56 @@ function CollapseClick(sender) {
 }
 const Home = React.forwardRef((props, ref) => {
   const [gatewayList, setgatewayList] = useState([]);
-  const [editGateway, seteditGateway] = useState({});
-  const [showdelDialog, setshowdelDialog] = useState(false);
-
-  async function GetGateways(gatewayID){
+  const gatRef = React.createRef();
+  async function GetGateways(gatewayID) {
     try {
-      let jsonRes = await (await fetch("http://localhost:8085/gateways/getAll")).json();
+      let jsonRes = await (
+        await fetch("http://localhost:8085/gateways/getAll")
+      ).json();
       setgatewayList(jsonRes);
     } catch (error) {
       console.log(error);
     }
-  };
-
-  function ShowDeleteDialog(gateway){
-    setshowdelDialog(!showdelDialog);
-    seteditGateway(gateway);
   }
 
-  function CloseDialog(resoult){
-    if(resoult){
-      setshowdelDialog(!showdelDialog);
-      GetGateways();
-    }else{
-      setshowdelDialog(!showdelDialog);
-    }
+  function ReRender(){
+    GetGateways();
+    gatRef.current.click();
   }
 
   useEffect(() => {
     GetGateways();
-  }, [gatewayList]);
+  }, []);
 
   return (
     <>
-      <button ref={ref} id="dummyButton" className="Hidden" onClick={GetGateways}></button>
+      <button
+        ref={ref}
+        id="dummyButton"
+        className="Hidden"
+        onClick={ReRender}
+      ></button>
       <HomeContainer>
         <HomeWrapper>
-          <GatewayList className="collapsible" >
-            {gatewayList && gatewayList.map((gateway, index) => (
-              <Gateway key={index++} OnEditGatewayClick={props.OnEditGatewayClick}  Gateway={gateway} itemClick={CollapseClick} ShowDeleteDialog={ShowDeleteDialog}></Gateway>
-            ))}
+          <GatewayList className="collapsible">
+            {gatewayList &&
+              gatewayList.map((gateway, index) => (
+                <Gateway
+                  key={index++}
+                  OnEditGatewayClick={props.OnEditGatewayClick}
+                  OnDeleteGateWayClick={props.OnDeleteGateWayClick}
+                  Gateway={gateway}
+                  itemClick={CollapseClick}
+                  OnPeripheralClick={props.OnPeripheralClick}
+                  OnAddPeripheralClick={props.OnAddPeripheralClick}
+                  ref={gatRef}
+                ></Gateway>
+              ))}
           </GatewayList>
         </HomeWrapper>
       </HomeContainer>
-      <DeleteDialog showDeleteDialog={showdelDialog} editGatewayID={editGateway.id} CloseDialog={CloseDialog}/>
     </>
-  )
-})
+  );
+});
 
-export default Home
+export default Home;

@@ -19,7 +19,7 @@ const NavBar = ({OnAddGatewayClick}) => {
           </NavLogoContainer>
           <NavButtonsContainer>
             <NavButton onClick={() => {
-              OnAddGatewayClick(false);
+              OnAddGatewayClick();
               }}>New Gateway</NavButton>
           </NavButtonsContainer>
         </NavContainer>

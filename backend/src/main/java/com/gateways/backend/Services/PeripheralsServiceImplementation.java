@@ -45,4 +45,14 @@ public class PeripheralsServiceImplementation implements PeripheralsService{
             return error.getMessage();
         }
     }
+
+    @Override
+    public String deleteAllPeripherals(int GatewayID){
+        try{
+            peripheralsRepository.deleteAllPeripherals(GatewayID);
+            return "Peripheral deleted";
+        }catch(Exception error){
+            return error.getMessage();
+        }
+    }
 }

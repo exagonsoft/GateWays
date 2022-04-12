@@ -50,9 +50,18 @@ public class PeripheralController {
     }
 
     @PostMapping("/delete")
-    public String deleteGateWay(int peripheralID){
+    public String deletePeripheral(int peripheralID){
         try{
            return peripheralsService.deletePeripheral(peripheralID);
+        }catch(Exception error){
+            return error.getMessage();
+        }
+    }
+
+    @PostMapping("/deleteall")
+    public String deleteGateWay(int gatewayID){
+        try{
+           return peripheralsService.deleteAllPeripherals(gatewayID);
         }catch(Exception error){
             return error.getMessage();
         }
