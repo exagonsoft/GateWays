@@ -17,4 +17,10 @@ export const GatewayItemEditButton = styled.div`
     background-color: #6df46d;
     box-shadow: 2px 3px 5px rgba(132, 115, 125, 0.9);
   }
+
+  @media screen and (max-width: 850px) {
+    width:100%;
+    text-align: center;
+    padding: 2px 10px;
+  }
 `

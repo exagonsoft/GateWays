@@ -15,19 +15,36 @@ const App = () => {
   const [showperipheralDialog, setshowperipheralDialog] = useState(false);
   const [editGateway, seteditGateway] = useState(null);
   const [editPeripheral, seteditPeripheral] = useState(null);
+  const [peripheralGateWay, setperipheralGateWay] = useState(null);
+  const [deleteGateway, setDeleteGateWay] = useState(null);
   const homeRef = React.createRef();
   function OnCloseDialogs(res) {
     setshowGatewayDialog(false);
-    setshowdelDialog(false);
-    setshowperipheralDialog(false);
     seteditGateway(null);
-    seteditPeripheral(null);
     if (res) {
+      setperipheralGateWay(null);
+      setDeleteGateWay(null);
+      homeRef.current.click();
+    }
+  }
+
+  function OnCloseDeleteGateWayDialog(res){
+    setshowdelDialog(false);
+    if(res != null) {
+      homeRef.current.click();
+    }
+  }
+
+  function onClosePeripheralDialog(res){
+    setshowperipheralDialog(false);
+    seteditPeripheral(null);
+    if(res) {
       homeRef.current.click();
     }
   }
 
   function OnAddGatewayClick() {
+    seteditGateway(null);
     setshowGatewayDialog(!showGatewayDialog);
   }
 
@@ -37,12 +54,12 @@ const App = () => {
   }
 
   function OnDeleteGatewayClick(Gateway) {
-    seteditGateway(Gateway);
+    setDeleteGateWay(Gateway);
     setshowdelDialog(!showdelDialog);
   }
 
   function OnAddPeripheralClick(Gateway){
-    seteditGateway(Gateway);
+    setperipheralGateWay(Gateway);
     seteditPeripheral(null);
     setshowperipheralDialog(!showperipheralDialog);
   }
@@ -83,13 +100,13 @@ const App = () => {
       />
       <PeripheralDialog showPeripheralDialog={showperipheralDialog}
          peripheral={editPeripheral}
-         OnCloseDialogs={OnCloseDialogs}
-         editGateway={editGateway}
+         onClosePeripheralDialog={onClosePeripheralDialog}
+         peripheralGateWay={peripheralGateWay}
       />
       <DeleteDialog
         showDeleteDialog={showdelDialog}
-        editGateway={editGateway}
-        OnCloseDialogs={OnCloseDialogs}
+        deleteGateway={deleteGateway}
+        OnCloseDeleteGateWayDialog={OnCloseDeleteGateWayDialog}
       />
     </>
   );

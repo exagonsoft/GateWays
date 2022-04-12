@@ -6,4 +6,8 @@ export const PeripheralDialogCheckerWrapper = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-self: center;
+
+  @media screen and (max-width: 850px) {
+    width: 84%;
+  }
 `

@@ -25,7 +25,6 @@ function CollapseClick(sender) {
 }
 const Home = React.forwardRef((props, ref) => {
   const [gatewayList, setgatewayList] = useState([]);
-  const gatRef = React.createRef();
   async function GetGateways(gatewayID) {
     try {
       let jsonRes = await (
@@ -39,7 +38,6 @@ const Home = React.forwardRef((props, ref) => {
 
   function ReRender(){
     GetGateways();
-    gatRef.current.click();
   }
 
   useEffect(() => {
@@ -67,7 +65,6 @@ const Home = React.forwardRef((props, ref) => {
                   itemClick={CollapseClick}
                   OnPeripheralClick={props.OnPeripheralClick}
                   OnAddPeripheralClick={props.OnAddPeripheralClick}
-                  ref={gatRef}
                 ></Gateway>
               ))}
           </GatewayList>

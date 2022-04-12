@@ -7,4 +7,8 @@ export const NavLogo = styled.h1`
    align-self: center;
    color: #fff;
    margin-left:10px;
+
+   @media screen and (max-width: 850px) {
+      font-size: medium;
+   }
 `

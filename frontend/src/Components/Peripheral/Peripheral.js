@@ -5,17 +5,17 @@ import { PeripheralWrapper } from "./PeripheralComponents/PeripheralWrapper";
 import peripheralActive from "../../Pictures/Peripherical_Active.svg";
 import peripheralInactive from "../../Pictures/Peripherical_Inactive.svg";
 
-const Peripheral = ({ Peripheral, onPeripheralClick }) => {
+const Peripheral = (props) => {
   return (
     <>
-      <PeripheralWrapper onClick={onPeripheralClick}>
-        {Peripheral.status ? (
+      <PeripheralWrapper onClick={() => {props.OnPeripheralClick(props.Peripheral);}}>
+        {props.Peripheral.status ? (
           <PeripheralIcon src={peripheralActive} alt="Active"></PeripheralIcon>
         ) : (
           <PeripheralIcon src={peripheralInactive} alt="Inactive"></PeripheralIcon>
         )}
 
-        <PeripheralText>{Peripheral.idnumber} ({Peripheral.vendor}) ({Peripheral.cratedate})</PeripheralText>
+        <PeripheralText>{props.Peripheral.idnumber} ({props.Peripheral.vendor}) ({props.Peripheral.cratedate})</PeripheralText>
       </PeripheralWrapper>
     </>
   );

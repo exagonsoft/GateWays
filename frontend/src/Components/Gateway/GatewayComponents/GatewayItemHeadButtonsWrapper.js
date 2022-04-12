@@ -6,4 +6,10 @@ export const GatewayHeadButtonsWrapper = styled.div`
   flex-direction: row;
   justify-content: right;
   align-items: center;
+
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 3px 0;
+  }
 `
