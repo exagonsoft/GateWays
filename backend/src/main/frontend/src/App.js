@@ -74,7 +74,7 @@ const App = () => {
       <Router>
         <NavBar OnAddGatewayClick={OnAddGatewayClick} />
         <MainContainer>
-          <Suspense fallback={renderLoader()}>
+          
             <Routes>
               <Route
                 exact
@@ -90,7 +90,7 @@ const App = () => {
                 }
               />
             </Routes>
-          </Suspense>
+          
         </MainContainer>
       </Router>
       <GatewayDialog
