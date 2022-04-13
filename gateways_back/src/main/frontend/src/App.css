@@ -1,4 +1,4 @@
-html{
+html {
   scrollbar-width: none;
 }
 
@@ -36,11 +36,69 @@ html{
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.Hidden{ 
+.Hidden {
   display: none !important;
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: auto;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: auto;
+  }
+}
+
+@-webkit-keyframes slideOut {
+  from {
+    height: auto;
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    height: auto;
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+.fadeIn {
+  -webkit-animation: slideIn;
+  animation: slideIn;
+  height: auto;
+}
+
+.fadeOut {
+  -webkit-animation: slideOut;
+  animation: slideOut;
+  height: 0;
+}
+
+.fast {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s
 }

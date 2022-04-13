@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import About from "./Components/About/About";
 import DeleteDialog from "./Components/DeleteDialog/DeleteDialog";
 import GatewayDialog from "./Components/GatewayDialog/GatewayDialog";
 import { MainContainer } from "./Components/Main/Container";
@@ -13,6 +14,7 @@ const App = () => {
   const [showGatewayDialog, setshowGatewayDialog] = useState(false);
   const [showdelDialog, setshowdelDialog] = useState(false);
   const [showperipheralDialog, setshowperipheralDialog] = useState(false);
+  const [showAbout, setshowAbout] = useState(false);
   const [editGateway, seteditGateway] = useState(null);
   const [editPeripheral, seteditPeripheral] = useState(null);
   const [peripheralGateWay, setperipheralGateWay] = useState(null);
@@ -55,9 +57,17 @@ const App = () => {
     }
   }
 
+  function OnCloseAbout(){
+    setshowAbout(!showAbout);
+  }
+
   function OnAddGatewayClick() {
     seteditGateway(null);
     setshowGatewayDialog(!showGatewayDialog);
+  }
+
+  function OnAboutClick(){
+    setshowAbout(!showAbout);
   }
 
   function OnEditGatewayClick(Gateway) {
@@ -88,7 +98,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <NavBar OnAddGatewayClick={OnAddGatewayClick} />
+        <NavBar OnAboutClick={OnAboutClick} OnAddGatewayClick={OnAddGatewayClick} />
         <MainContainer>
             <Routes>
               <Route
@@ -123,6 +133,8 @@ const App = () => {
         deleteGateway={deleteGateway}
         OnCloseDeleteGateWayDialog={OnCloseDeleteGateWayDialog}
       />
+
+      <About showAbout={showAbout} OnCloseAbout={OnCloseAbout}/>
     </>
   );
 };

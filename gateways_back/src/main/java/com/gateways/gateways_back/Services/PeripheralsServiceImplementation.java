@@ -13,7 +13,12 @@ public class PeripheralsServiceImplementation implements PeripheralsService{
 
     @Override
     public Peripherals addPeripheral(Peripherals peripheral){
-        return peripheralsRepository.save(peripheral);
+        List<Peripherals> peripherals = peripheralsRepository.getAllPeripherals(peripheral.getGatewayid());
+        if(peripherals.size() >= 10){
+            return null;
+        }else{
+            return peripheralsRepository.save(peripheral);
+        }
     }
 
     @Override

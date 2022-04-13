@@ -8,7 +8,7 @@ import { NavLogoContainer } from "./NavBarComponents/NavLogoContainer";
 import { NavButton } from "./NavBarComponents/NavButton";
 import { NavButtonsContainer } from "./NavBarComponents/NavButtonsContainer";
 
-const NavBar = ({OnAddGatewayClick}) => {
+const NavBar = (props) => {
   return (
     <>
       <Nav>
@@ -18,8 +18,9 @@ const NavBar = ({OnAddGatewayClick}) => {
             <NavLogo>Gateways Controll</NavLogo>
           </NavLogoContainer>
           <NavButtonsContainer>
+            <NavButton onClick={props.OnAboutClick}>About</NavButton>
             <NavButton onClick={() => {
-              OnAddGatewayClick();
+              props.OnAddGatewayClick();
               }}>New Gateway</NavButton>
           </NavButtonsContainer>
         </NavContainer>

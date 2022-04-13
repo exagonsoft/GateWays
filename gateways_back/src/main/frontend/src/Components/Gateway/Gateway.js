@@ -38,7 +38,6 @@ const Gateway = (props) => {
 
   return (
     <>
-       
       <GatewayItem className="collapsible-header ClickableItem">
         <GatewayItemHead onClick={props.itemClick}>
           <GatewayItemHeadWrapper>
